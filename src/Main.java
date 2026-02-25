@@ -50,7 +50,7 @@ public class Main {
     System.out.println("6 - Former une unité à la caserne");
     System.out.println("7 - Désassigner une unité");
     System.out.println("8 - Améliorer un batîment");
-    System.out.println("9 - Passer au jour suivant");
+    System.out.println("9 - Passer au jour suivant");// compteur de jours, methodes consumes, production
     System.out.println("10 - Quitter le jeu");
 
     try {
