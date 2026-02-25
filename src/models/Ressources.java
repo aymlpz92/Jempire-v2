@@ -1,5 +1,9 @@
 package models;
 
+import java.util.List;
+
+import models.unites.Unites;
+
 public class Ressources {
     private int wood;
     private int stone;
@@ -18,43 +22,27 @@ public class Ressources {
     public int getWood() {
         return wood;
     }
-
-    public void setWood(int wood) {
-        this.wood = wood;
-    }
-
     public int getStone() {
         return stone;
     }
-
-    public void setStone(int stone) {
-        this.stone = stone;
-    }
-
     public int getIron() {
         return iron;
     }
-
-    public void setIron(int iron) {
-        this.iron = iron;
-    }
-
     public int getGold() {
         return gold;
     }
-
-    public void setGold(int gold) {
-        this.gold = gold;
-    }
-
     public int getFood() {
         return food;
     }
 
-    public void setFood(int food) {
-        this.food = food;
+   
+    public void consume(List<Unites> population){
+        for (int i =0; i< population.size();i++ ) {
+            food -= 1;
+        }
     }
-
-
+    public void addRessources (){
+        // ressource ++ plus stock 
+    }
     
 }
