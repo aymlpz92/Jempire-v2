@@ -41,8 +41,11 @@ public class Ressources {
             food -= 1;
         }
     }
-    public void addRessources (){
-        // ressource ++ plus stock 
+    public void addWood(int newWood) {
+        wood += newWood;
+    }
+    public void addFood(int newFood) {
+        food += newFood;
     }
     
 }
