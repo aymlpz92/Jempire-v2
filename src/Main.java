@@ -1,10 +1,14 @@
 import models.Ressources;
+import models.Village;
+import models.unites.Villageois;
+
 import java.util.Scanner;
 
 
 public class Main {
 
     static Scanner scanner = new Scanner(System.in);
+    
 
     public static int readInt(String prompt) throws NumberFormatException {
         System.out.print(prompt);
@@ -14,31 +18,21 @@ public class Main {
     }
 
     public static void main(String[] args) {
-
-
+        Village village = new Village(null, null);
         
-        
-        Ressources r = new Ressources(100, 100, 100, 100, 100);
 
         while (true) {
 
-
-            menu(scanner, r);
+            menu(scanner, village);
 
 
         }
 
     }
 
-    public static void menu(Scanner scanner, Ressources r) {
+    public static void menu(Scanner scanner, Village village) {
 
-    
-    
-    System.out.print("\n| Bois : " + r.getWood());
-    System.out.print(" || Pierre : " + r.getStone());
-    System.out.print(" || Fer : " + r.getIron());
-    System.out.print(" || Or : " + r.getGold());
-    System.out.println(" || Nourriture : " + r.getFood());
+    village.displayRessources();
     
     System.out.println("\nChoisissez une action parmi les suivantes :");
 
@@ -81,7 +75,7 @@ public class Main {
            
             case 9:
                 System.out.println("9 - Passer au jour suivant");
-                
+                village.nextDay();
                 break;
             case 10:
                 System.out.println("10 - Quitter le jeu");
@@ -96,8 +90,5 @@ public class Main {
     
     }
 
-    public static void menuConstruction() {
-
-    }
 
 }
