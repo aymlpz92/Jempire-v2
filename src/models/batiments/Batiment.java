@@ -4,20 +4,34 @@ import models.unites.*;
 import java.util.List;
 
 public class Batiment {
-    private String name;
-    private int niveau;
-    private int cout;
-    private List<Unites> unitesAssignes;
+    protected String name;
+    protected int niveau;
+    protected List<Unites> unitesAssignes;
 
-    public Batiment(String name, int niveau, int cout, List<Unites> unitesAssignes) {
+    public Batiment(String name, int niveau) {
         this.name = name;
         this.niveau = niveau;
-        this.cout = cout;
+    }
+
+    public Batiment(String name, int niveau, List<Unites> unitesAssignes) {
+        this(name, niveau);
         this.unitesAssignes = unitesAssignes;
     }
 
     public void product() {
         
     }
-    
+
+    public String getName() {
+        return name;
+    }
+
+    public int getNiveau() {
+        return niveau;
+    }
+
+    public List<Unites> getUnitesAssignes() {
+        return unitesAssignes;
+    }
+  
 }
