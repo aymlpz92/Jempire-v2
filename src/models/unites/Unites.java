@@ -15,6 +15,8 @@ public abstract class Unites {
         this.batimentActuel = batimentActuel;
     }
 
-    public abstract void travailler();
+    public void travailler() {
+        
+    }
 
 }

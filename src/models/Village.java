@@ -44,10 +44,7 @@ public class Village {
     public void afficherDetails() {
         for (Batiment batiment : batiments) {
             System.out.println(batiment.getName());
-            System.out.println("a");
         }
-        System.out.println("");
-
     }
 
     public boolean isGameOver() {
