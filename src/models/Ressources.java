@@ -44,6 +44,10 @@ public class Ressources {
     public void addWood(int newWood) {
         wood += newWood;
     }
+
+    public void setWood(int newWood) {
+        this.wood = newWood;
+    }
     public void addFood(int newFood) {
         food += newFood;
     }

@@ -1,15 +1,18 @@
 package models;
 import models.batiments.Batiment;
+import models.batiments.Maison;
 import models.unites.Unites;
 import models.unites.Villageois;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Village {
-  private  List<Unites> population;
-  private  List<Batiment> batiments;
-  Villageois villageois = new Villageois(null, 0, false, null, false);
+  List<Unites> population;
+  List<Batiment> batiments;
+  Villageois villageois = new Villageois("Paul", 10, false, null, false);
   Ressources r = new Ressources(100, 100, 100, 100, 100);
+  Maison maison = new Maison("maison", 1);
 
   public Village(List<Unites> population, List<Batiment> batiments) {
       this.population = population;
@@ -24,12 +27,26 @@ public class Village {
         System.out.println(" || Nourriture : " + r.getFood());
     }
 
+    public void displayBatiments() {
+        System.out.println("Batiments : " + maison.getName());
+    }
+
     public void nextDay(){
         villageois.collecte(r);
     }
+    public void construction (){
+      Maison maison = new Maison("maison", 1);// deplacer dans maison et crée une construction dans batiment et override construction dans toutes les classe 
+      batiments.add(maison);
+      r.setWood(r.getWood() - 20);
+  }
 
     public void afficherDetails(){
-        // afficher liste unite batiment et ressources 
+        for (Batiment batiment : batiments) {
+            System.out.println(batiment.getName());
+            System.out.println("a");
+        }
+        System.out.println("");
+        
     }
 
     public boolean isGameOver(){
