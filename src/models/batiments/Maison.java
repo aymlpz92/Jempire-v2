@@ -5,34 +5,24 @@ import models.unites.*;
 import java.util.List;
 
 public class Maison extends Batiment {
-    private int population;
+  
 
     public Maison(String name, int niveau) {
         super(name, niveau);
 
     }
 
-    public int getPopulation() {
-        return population;
-    }
-
-    public void setPopulation(int population) {
-        this.population = population;
-    }
-
-    public String getName() {
-        return name;
-    }
+    
 
 
     public static Batiment construction(Ressources ressources) {
-        if (ressources.getWood() < 20) {
+        if (ressources.getWood() < 10) {
             System.err.println("Pas assez de bois");
             return null;
         }
         Maison maison = new Maison("maison", 1); // deplacer dans maison et crée une construction dans batiment et
                                                  // override construction dans toutes les classe
-        ressources.addWood(-20);
+        ressources.addWood(-10);
         return maison;
     }
 

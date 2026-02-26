@@ -147,7 +147,7 @@ public class Main {
             } catch (NumberFormatException e) {
                 e.printStackTrace();
             }
-        } while (batiment == null || !exit);
+        } while (batiment == null && !exit);
     }
 
     public static void menuRecruter() {
@@ -182,7 +182,7 @@ public class Main {
             } catch (NumberFormatException e) {
                 e.printStackTrace();
             }
-        } while (unite == null || !exit);
+        } while (unite == null && !exit);
     }
 
 }
