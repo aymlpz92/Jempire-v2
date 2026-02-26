@@ -26,7 +26,6 @@ public class Main {
 
         menu(scanner);
 
-
     }
 
     public static void menu(Scanner scanner) {
@@ -118,21 +117,21 @@ public class Main {
                         break;
 
                     case 2:
-
+                        batiment = Mine.construction(village.getRessources());
                         break;
                     case 3:
-
+                        batiment = Ferme.construction(village.getRessources());
                         break;
                     case 4:
-
+                        batiment = Caserne.construction(village.getRessources());
                         break;
 
                     case 5:
-
+                        batiment = Atelier.construction(village.getRessources());
                         break;
 
                     case 6:
-
+                        batiment = Mur.construction(village.getRessources());
                         break;
                     case 0:
                         exit = true;
@@ -148,7 +147,7 @@ public class Main {
             } catch (NumberFormatException e) {
                 e.printStackTrace();
             }
-        } while (batiment == null && !exit);
+        } while (batiment == null || !exit);
     }
 
     public static void menuRecruter() {
@@ -157,7 +156,7 @@ public class Main {
         do {
             System.out.println("\nQuelle unité voulez vous recruter ?");
             System.out.println("1 - Villageois \t|Bois : 10");
-            System.out.println("2 - Artisan    \t|Bois : 20     (Atelier recquis)" );
+            System.out.println("2 - Artisan    \t|Bois : 20     (Atelier recquis)");
             System.out.println("0 - Retour");
 
             try {
@@ -180,13 +179,10 @@ public class Main {
                         break;
                 }
 
-                if (unite != null) {
-                    
-                }
             } catch (NumberFormatException e) {
                 e.printStackTrace();
             }
-        } while (unite == null && !exit);
+        } while (unite == null || !exit);
     }
 
 }
