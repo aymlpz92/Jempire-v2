@@ -8,16 +8,12 @@ public class Atelier extends Batiment {
 
     }
 
-    
-
-
     public static Batiment construction(Ressources ressources) {
         if (ressources.getWood() < 10) {
             System.err.println("Pas assez de bois");
             return null;
         }
-        Atelier atelier = new Atelier("atelier", 1); // deplacer dans maison et crée une construction dans batiment et
-                                                 // override construction dans toutes les classe
+        Atelier atelier = new Atelier("atelier", 1); 
         ressources.addWood(-10);
         return atelier;
     }
