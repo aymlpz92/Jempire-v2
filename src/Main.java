@@ -1,9 +1,7 @@
 import models.Ressources;
 import models.Village;
-import models.batiments.Batiment;
-import models.batiments.Maison;
-import models.unites.Villageois;
-
+import models.batiments.*;
+import models.unites.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -23,14 +21,11 @@ public class Main {
     public static void main(String[] args) {
         Ressources ressources = new Ressources(100, 100, 100, 100, 100);
         village = new Village(new ArrayList<>(), new ArrayList<>(), ressources);
-        // ajouterUnite()
+        village.ajouterUnite();
         // ajouterBatiment()
 
-        while (true) {
+        menu(scanner);
 
-            menu(scanner);
-
-        }
 
     }
 
@@ -62,10 +57,11 @@ public class Main {
                         break;
                     case 2:
                         System.out.println("2 - Construire un batîment");
-                        afficherMenuConstru();
+                        menuConstru();
                         break;
                     case 3:
                         System.out.println("3 - Recruter une unité");
+                        menuRecruter();
                         break;
                     case 4:
                         System.out.println("4 - Assigner une unité");
@@ -100,7 +96,7 @@ public class Main {
 
     }
 
-    public static void afficherMenuConstru() {
+    public static void menuConstru() {
         Batiment batiment = null;
         boolean exit = false;
         do {
@@ -153,6 +149,44 @@ public class Main {
                 e.printStackTrace();
             }
         } while (batiment == null && !exit);
+    }
+
+    public static void menuRecruter() {
+        Unites unite = null;
+        boolean exit = false;
+        do {
+            System.out.println("\nQuelle unité voulez vous recruter ?");
+            System.out.println("1 - Villageois \t|Bois : 10");
+            System.out.println("2 - Artisan    \t|Bois : 20     (Atelier recquis)" );
+            System.out.println("0 - Retour");
+
+            try {
+
+                int userSubChoice = readInt("Votre choix : ");
+                switch (userSubChoice) {
+                    case 1:
+                        unite = village.ajouterUnite();
+                        break;
+
+                    case 2:
+
+                        break;
+
+                    case 0:
+                        exit = true;
+                        break;
+                    default:
+                        System.err.println("Veuillez choisir une option valide\n");
+                        break;
+                }
+
+                if (unite != null) {
+                    
+                }
+            } catch (NumberFormatException e) {
+                e.printStackTrace();
+            }
+        } while (unite == null && !exit);
     }
 
 }
