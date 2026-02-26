@@ -4,6 +4,7 @@ import models.batiments.Batiment;
 import models.batiments.Maison;
 import models.unites.Unites;
 import models.unites.Villageois;
+import models.unites.Artisans;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -55,10 +56,20 @@ public class Village {
         return ressources;
     }
 
-    public Unites ajouterUnite() {
-        Villageois villageois = new Villageois("Paul", 10, false, null, false);
+    public Unites ajouterUnite(int choix) {
+        if (choix == 1) {
+            Villageois villageois = new Villageois("Paul", 10, false, null, false);
         population.add(villageois);
         return villageois;
+        }
+
+        if (choix == 2) {
+            Artisans artisan = new Artisans("Michel", 10, false, null);
+            population.add(artisan);
+            return artisan;
+        }
+        return null;
+        
     }
 
     public Batiment ajouterBatiment(Batiment batiment) {

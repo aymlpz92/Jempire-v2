@@ -21,8 +21,7 @@ public class Main {
     public static void main(String[] args) {
         Ressources ressources = new Ressources(100, 100, 100, 100, 100);
         village = new Village(new ArrayList<>(), new ArrayList<>(), ressources);
-        village.ajouterUnite();
-        // ajouterBatiment()
+        village.ajouterUnite(1);
 
         menu(scanner);
 
@@ -164,11 +163,11 @@ public class Main {
                 int userSubChoice = readInt("Votre choix : ");
                 switch (userSubChoice) {
                     case 1:
-                        unite = village.ajouterUnite();
+                        unite = village.ajouterUnite(1);
                         break;
 
                     case 2:
-
+                        unite = village.ajouterUnite(2);
                         break;
 
                     case 0:
