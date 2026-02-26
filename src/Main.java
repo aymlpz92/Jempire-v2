@@ -1,5 +1,7 @@
 import models.Ressources;
 import models.Village;
+import models.batiments.Batiment;
+import models.batiments.Maison;
 import models.unites.Villageois;
 
 import java.util.ArrayList;
@@ -19,7 +21,10 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        village = new Village(new ArrayList<>(), new ArrayList<>());
+        Ressources ressources = new Ressources(100, 100, 100, 100, 100);
+        village = new Village(new ArrayList<>(), new ArrayList<>(), ressources);
+        // ajouterUnite()
+        // ajouterBatiment()
 
         while (true) {
 
@@ -30,112 +35,124 @@ public class Main {
     }
 
     public static void menu(Scanner scanner) {
+        boolean exit = false;
+        do {
+            village.displayRessources();
+            village.displayBatiments();
 
-        village.displayRessources();
-        village.displayBatiments();
+            System.out.println("\nChoisissez une action parmi les suivantes :");
 
-        System.out.println("\nChoisissez une action parmi les suivantes :");
+            System.out.println("1 - Détails du village");
+            System.out.println("2 - Construire un batîment");
+            System.out.println("3 - Recruter une unité");
+            System.out.println("4 - Assigner une unité");
+            System.out.println("5 - Equiper une unité");
+            System.out.println("6 - Former une unité à la caserne");
+            System.out.println("7 - Désassigner une unité");
+            System.out.println("8 - Améliorer un batîment");
+            System.out.println("9 - Passer au jour suivant");// compteur de jours, methodes consumes, production
+            System.out.println("0 - Quitter le jeu");
 
-        System.out.println("1 - Détails du village");
-        System.out.println("2 - Construire un batîment");
-        System.out.println("3 - Recruter une unité");
-        System.out.println("4 - Assigner une unité");
-        System.out.println("5 - Equiper une unité");
-        System.out.println("6 - Former une unité à la caserne");
-        System.out.println("7 - Désassigner une unité");
-        System.out.println("8 - Améliorer un batîment");
-        System.out.println("9 - Passer au jour suivant");// compteur de jours, methodes consumes, production
-        System.out.println("0 - Quitter le jeu");
+            try {
+                int userChoice = readInt("Votre choix : ");
+                switch (userChoice) {
+                    case 1:
+                        System.out.println("1 - Détails du village");
+                        village.afficherDetails();
+                        break;
+                    case 2:
+                        System.out.println("2 - Construire un batîment");
+                        afficherMenuConstru();
+                        break;
+                    case 3:
+                        System.out.println("3 - Recruter une unité");
+                        break;
+                    case 4:
+                        System.out.println("4 - Assigner une unité");
+                        break;
+                    case 5:
+                        System.out.println("5 - Equiper une unité");
+                        break;
+                    case 6:
+                        System.out.println("6 - Former une unité à la caserne");
+                        break;
+                    case 7:
+                        System.out.println("7 - Désassigner une unité");
+                        break;
+                    case 8:
+                        System.out.println("8 - Améliorer un batîment");
+                        break;
+                    case 9:
+                        System.out.println("9 - Passer au jour suivant");
+                        village.nextDay();
+                        break;
+                    case 0:
+                        exit = true;
+                        break;
+                    default:
+                        System.err.println("Veuillez choisir une option valide\n");
+                }
 
-        try {
-            int userChoice = readInt("Votre choix : ");
-            switch (userChoice) {
-                case 1:
-                    System.out.println("1 - Détails du village");
-                    village.afficherDetails();
-                    break;
-                case 2:
-                    System.out.println("2 - Construire un batîment");
-                    afficherMenuConstru();
-                    break;
-                case 3:
-                    System.out.println("3 - Recruter une unité");
-                    break;
-                case 4:
-                    System.out.println("4 - Assigner une unité");
-                    break;
-                case 5:
-                    System.out.println("5 - Equiper une unité");
-                    break;
-                case 6:
-                    System.out.println("6 - Former une unité à la caserne");
-                    break;
-                case 7:
-                    System.out.println("7 - Désassigner une unité");
-                    break;
-                case 8:
-                    System.out.println("8 - Améliorer un batîment");
-                    break;
-                case 9:
-                    System.out.println("9 - Passer au jour suivant");
-                    village.nextDay();
-                    break;
-                case 10:
-                    System.out.println("10 - Quitter le jeu");
-                    break;
-                default:
-                    System.err.println("Veuillez choisir une option valide\n");
+            } catch (NumberFormatException e) {
+                System.err.println("Erreur de saisie\n");
             }
-
-        } catch (NumberFormatException e) {
-            System.err.println("Erreur de saisie\n");
-        }
+        } while (!exit);
 
     }
 
     public static void afficherMenuConstru() {
-        System.out.println("\nQuelle batiment voulez vous construire");
-        System.out.println("1 - Construire une maison \t|Bois : 10");
-        System.out.println("2 - Construire une mine   \t|Bois : 20");
-        System.out.println("3 - Construire une ferme  \t|Bois : 20 |Pierre : 5");
-        System.out.println("4 - Construire une caserne\t|Bois : 20 |Pierre : 10 | Fer : 5");
-        System.out.println("5 - Construire un atelier \t|Bois : 15 |Pierre : 15 | Fer : 10");
-        System.out.println("6 - Construire un mur     \t|Bois : 25 |Pierre : 20 | Fer : 10");
-        try {
+        Batiment batiment = null;
+        boolean exit = false;
+        do {
+            System.out.println("\nQuelle batiment voulez vous construire");
+            System.out.println("1 - Construire une maison \t|Bois : 10");
+            System.out.println("2 - Construire une mine   \t|Bois : 20");
+            System.out.println("3 - Construire une ferme  \t|Bois : 20 |Pierre : 5");
+            System.out.println("4 - Construire une caserne\t|Bois : 20 |Pierre : 10 | Fer : 5");
+            System.out.println("5 - Construire un atelier \t|Bois : 15 |Pierre : 15 | Fer : 10");
+            System.out.println("6 - Construire un mur     \t|Bois : 25 |Pierre : 20 | Fer : 10");
+            System.out.println("0 - Retour");
 
-            int userSubChoice = readInt("Votre choix : ");
+            try {
 
-            switch (userSubChoice) {
-                case 1:
-                    village.construction();
+                int userSubChoice = readInt("Votre choix : ");
+                switch (userSubChoice) {
+                    case 1:
+                        batiment = Maison.construction(village.getRessources());
+                        break;
 
-                    break;
+                    case 2:
 
-                case 2:
+                        break;
+                    case 3:
 
-                    break;
-                case 3:
+                        break;
+                    case 4:
 
-                    break;
-                case 4:
+                        break;
 
-                    break;
+                    case 5:
 
-                case 5:
+                        break;
 
-                    break;
+                    case 6:
 
-                case 6:
+                        break;
+                    case 0:
+                        exit = true;
+                        break;
+                    default:
+                        System.err.println("Veuillez choisir une option valide\n");
+                        break;
+                }
 
-                    break;
-
-                default:
-                    System.err.println("Veuillez choisir une option valide\n");
-                    break;
+                if (batiment != null) {
+                    village.ajouterBatiment(batiment);
+                }
+            } catch (NumberFormatException e) {
+                e.printStackTrace();
             }
-        } catch (NumberFormatException e) {
-            e.printStackTrace();
-        }
+        } while (batiment == null && !exit);
     }
 
 }

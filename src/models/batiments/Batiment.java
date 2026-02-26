@@ -1,4 +1,5 @@
 package models.batiments;
+import models.Ressources;
 import models.unites.*;
 
 import java.util.List;
@@ -33,5 +34,8 @@ public class Batiment {
     public List<Unites> getUnitesAssignes() {
         return unitesAssignes;
     }
-  
+    
+    public static Batiment construction(Ressources resources) {
+        return null;
+    }
 }

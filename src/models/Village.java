@@ -3,42 +3,35 @@ import models.batiments.Batiment;
 import models.batiments.Maison;
 import models.unites.Unites;
 import models.unites.Villageois;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class Village {
   List<Unites> population;
   List<Batiment> batiments;
-  Villageois villageois = new Villageois("Paul", 10, false, null, false);
-  Ressources r = new Ressources(100, 100, 100, 100, 100);
-  Maison maison = new Maison("maison", 1);
+  Ressources ressources; 
 
-  public Village(List<Unites> population, List<Batiment> batiments) {
+  public Village(List<Unites> population, List<Batiment> batiments, Ressources ressources) {
       this.population = population;
       this.batiments = batiments;
+      this.ressources = ressources;
     }
 
     public void displayRessources() {
-        System.out.print("\n| Bois : " + r.getWood());
-        System.out.print(" || Pierre : " + r.getStone());
-        System.out.print(" || Fer : " + r.getIron());
-        System.out.print(" || Or : " + r.getGold());
-        System.out.println(" || Nourriture : " + r.getFood());
+        System.out.print("\n| Bois : " + ressources.getWood());
+        System.out.print(" || Pierre : " + ressources.getStone());
+        System.out.print(" || Fer : " + ressources.getIron());
+        System.out.print(" || Or : " + ressources.getGold());
+        System.out.println(" || Nourriture : " + ressources.getFood());
     }
 
     public void displayBatiments() {
-        System.out.println("Batiments : " + maison.getName());
+        
     }
 
     public void nextDay(){
-        villageois.collecte(r);
+        // Boucler sur poupulation, appeler travailler() et décrémenté food 
     }
-    public void construction (){
-      Maison maison = new Maison("maison", 1);// deplacer dans maison et crée une construction dans batiment et override construction dans toutes les classe 
-      batiments.add(maison);
-      r.setWood(r.getWood() - 20);
-  }
 
     public void afficherDetails(){
         for (Batiment batiment : batiments) {
@@ -51,5 +44,14 @@ public class Village {
 
     public boolean isGameOver(){
         return false;
+    }
+
+    public Ressources getRessources() {
+        return ressources;
+    }
+
+    public void ajouterBatiment(Batiment batiment) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'ajouterBatiment'");
     }
 }
