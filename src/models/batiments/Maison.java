@@ -25,14 +25,14 @@ public class Maison extends Batiment {
     }
 
 
-    public static Batiment construction(Ressources resources) {
-        if (resources.getWood() < 20) {
+    public static Batiment construction(Ressources ressources) {
+        if (ressources.getWood() < 20) {
             System.err.println("Pas assez de bois");
             return null;
         }
         Maison maison = new Maison("maison", 1); // deplacer dans maison et crée une construction dans batiment et
                                                  // override construction dans toutes les classe
-        resources.addWood(-20);
+        ressources.addWood(-20);
         return maison;
     }
 

@@ -8,7 +8,8 @@ import models.batiments.*;
 
 public class Villageois extends Unites {
     private boolean construction = false;
-    
+
+
     public Villageois(String name, int pv, boolean assigne, Batiment batimentActuel, boolean construction ) {
         super(name, pv, assigne, batimentActuel);
         this.construction = construction;
